@@ -10,6 +10,8 @@ import AllPayments from './all.payments';
 import Colors from '../utils/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Reports from './reports';
+import PaymentDetails from './payment.details';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -58,7 +60,9 @@ const AppNavigator = () => {
         >
             <Stack.Screen name={Routes.splash} component={SplashScreen} />
             <Stack.Screen name={Routes.tabNav} component={TabNavigator} />
-            <Stack.Screen name={Routes.parties} component={Parties} />
+            <Stack.Screen name={Routes.reports} component={Reports} />
+            <Stack.Screen name={Routes.paymentDetails} component={PaymentDetails} />
+
         </Stack.Navigator>
     )
 }

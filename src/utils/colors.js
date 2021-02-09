@@ -6,6 +6,8 @@ const Colors = {
     themeBlue: '#256CFD',
     white: '#FFFFFF',
     darkBlack: '#000000',
+    cardBg: "#232332",
+    cardBorder:"#525252",
 
 
     olive: '#73AB66',
