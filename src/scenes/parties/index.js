@@ -49,8 +49,8 @@ class Parties extends Component {
                         <Text style={{ fontSize: 18, color: "#fff" }}>CN</Text>
                     </View>
                     <View style={{ marginLeft: 12 }}>
-                        <Text style={{ color: '#fff', fontSize: 19 }}>{item.name}</Text>
-                        <Text style={{ color: '#A8A8A8', fontSize: 18 }}>{item.contact}</Text>
+                        <Text style={{ color: '#fff', fontSize: 18 }}>{item.name}</Text>
+                        <Text style={{ color: '#A8A8A8', fontSize: 17 }}>{item.contact}</Text>
                     </View>
                 </View>
 

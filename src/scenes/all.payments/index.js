@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { View, ScrollView, Text, Platform, TouchableOpacity, Image, Animated, FlatList } from "react-native";
+import { View, ScrollView, Text, Platform, TouchableOpacity, Image, Animated, FlatList, TextInput } from "react-native";
 import { CommonModal, SearchBar } from "../../components";
 import Colors from "../../utils/colors";
 import common_styles from "../../utils/common_styles";
 import Global from "../../utils/globals";
 import Foundation from 'react-native-vector-icons/Foundation';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import Feather from 'react-native-vector-icons/Feather';
 
 import Ripple from "react-native-material-ripple";
 import ModalBox from "react-native-modalbox";
@@ -50,7 +50,7 @@ class AllPayments extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            addNewParty: true
+            showSortModal: false
         }
     }
 
@@ -69,8 +69,8 @@ class AllPayments extends Component {
                         style={{ marginLeft: -4, height: 46, width: 10, borderRadius: 300, backgroundColor: item.alert ? Colors.themeRed : '#9B9B9B', alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
                     </View>
                     <View style={{ marginLeft: 12 }}>
-                        <Text style={{ color: '#fff', fontSize: 19 }}>{item.name}</Text>
-                        <Text style={{ color: '#A8A8A8', fontSize: 18 }}>{item.contact}</Text>
+                        <Text style={{ color: '#fff', fontSize: 18 }}>{item.name}</Text>
+                        <Text style={{ color: '#A8A8A8', fontSize: 17 }}>{item.contact}</Text>
                     </View>
                 </View>
 
@@ -93,11 +93,58 @@ class AllPayments extends Component {
         )
     }
 
+    renderSortModal = () => {
+        return (
+            <ModalBox
+                position={'center'}
+                backdropPressToClose={true}
+                isOpen={this.state.showSortModal}
+                style={{
+                    height: null,
+                    width: '90%',
+                    backgroundColor: Colors.cardBg,
+                    borderWidth: 1,
+                    borderColor: Colors.cardBorder,
+                    borderRadius: 16,
+                    paddingBottom: 16
+                }}
+                ref={'modal1'}
+                swipeToClose={this.state.swipeToClose}
+                onClosed={() => { this.setState({ showSortModal: false }) }}
+                onOpened={this.onOpen}
+                onClosingState={() => { this.setState({ showSortModal: false }) }}>
+                <View style={{ width: '100%' }}>
+                    <Text style={{ color: "#fff", fontSize: 24, fontWeight: 'bold', alignSelf: 'flex-end', padding: 16 }}>Sort by</Text>
+                </View>
+
+                <Ripple style={{ flexDirection: 'row' }}>
+                    <Feather name="check-circle" color={'#eee'} style={{ alignSelf: 'center', marginLeft: 16 }} size={24} />
+                    <Text style={{ color: "#fff", fontSize: 18, padding: 10, }}>Due Date</Text>
+                </Ripple>
+
+                <View style={{ height: 0.2, width: '100%', backgroundColor: '#DFDFDF' }}></View>
+
+                <Ripple style={{ flexDirection: 'row' }}>
+                    <Feather name="check-circle" color={'#eee'} style={{ alignSelf: 'center', marginLeft: 16 }} size={24} />
+                    <Text style={{ color: "#fff", fontSize: 18, padding: 10, }}>High</Text>
+                </Ripple>
+
+                <View style={{ height: 0.2, width: '100%', backgroundColor: '#DFDFDF' }}></View>
+
+                <Ripple style={{ flexDirection: 'row' }}>
+                    <Feather name="check-circle" color={'#eee'} style={{ alignSelf: 'center', marginLeft: 16 }} size={24} />
+                    <Text style={{ color: "#fff", fontSize: 18, padding: 10, }}>Low</Text>
+                </Ripple>
+
+            </ModalBox>
+        )
+    }
+
 
     render() {
         return (
             <View style={common_styles.container}>
-                <SearchBar onAction={() => { }} />
+                <SearchBar onAction={() => { this.setState({ showSortModal: true }) }} />
 
                 <ScrollView style={{}}>
                     <Text style={{ color: '#747474', padding: 16, fontSize: 16 }}>LESS THAN 30 DAYS</Text>
@@ -119,6 +166,8 @@ class AllPayments extends Component {
                         keyExtractor={item => item.id}
                     />
                 </ScrollView>
+
+                {this.renderSortModal()}
 
                 {this.renderFAB()}
 

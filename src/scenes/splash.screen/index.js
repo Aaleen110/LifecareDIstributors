@@ -18,7 +18,7 @@ class SplashScreen extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            this.props.navigation.navigate(Routes.tabNav, { isFromList: false });
+            this.props.navigation.navigate(Routes.login, {});
         }, 2000);
     }
 

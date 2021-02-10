@@ -12,6 +12,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Reports from './reports';
 import PaymentDetails from './payment.details';
+import Login from './login';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -59,6 +60,7 @@ const AppNavigator = () => {
             }}
         >
             <Stack.Screen name={Routes.splash} component={SplashScreen} />
+            <Stack.Screen name={Routes.login} component={Login} />
             <Stack.Screen name={Routes.tabNav} component={TabNavigator} />
             <Stack.Screen name={Routes.reports} component={Reports} />
             <Stack.Screen name={Routes.paymentDetails} component={PaymentDetails} />

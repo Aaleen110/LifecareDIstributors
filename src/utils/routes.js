@@ -4,7 +4,9 @@ const Routes = {
     parties: 'PARTIES',
     allPayments: 'PAYMENTS',
     paymentDetails: 'paymentDetails',
-    reports: 'reports'
+    reports: 'reports',
+    login: 'login'
+
 };
 
 export default Routes;
